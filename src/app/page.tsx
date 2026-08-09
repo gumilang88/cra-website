@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import ChaosControls from "@/components/ChaosControls";
+import BelieveOMeter from "@/components/BelieveOMeter";
 import Gauge from "@/components/Gauge";
 import Runaway from "@/components/Runaway";
 import { BatteryLow, Pill, PersonStanding, TrendingDown } from "lucide-react";
@@ -326,6 +327,7 @@ export default function Home() {
         <AboutRow />
         <WeirdStats />
         <ChaosControls />
+        <BelieveOMeter />
         <Tokenomics />
         <Roadmap />
       </main>
