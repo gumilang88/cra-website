@@ -200,7 +200,7 @@ function WeirdStats() {
                 </span>
                 <div className="text-left">
                   <div className="font-serif text-xl font-bold leading-none text-white">{s.num}</div>
-                  <div className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white/70">{s.label}</div>
+                  <div className="mt-1 font-mono text-[14px] font-extrabold uppercase tracking-[0.1em] text-white/80">{s.label}</div>
                 </div>
               </div>
             </Runaway>
