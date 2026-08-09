@@ -194,13 +194,13 @@ function WeirdStats() {
         <div className="flex flex-wrap items-stretch justify-center gap-3 [@media(min-width:700px)]:grid [@media(min-width:700px)]:grid-cols-4">
           {stats.map((s, i) => (
             <Runaway key={s.label} className="chaos-wander" style={{ ["--i" as string]: String(i) }}>
-              <div className="flex min-w-[120px] flex-1 basis-[140px] items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-3 backdrop-blur-xl">
+              <div className="flex min-w-[180px] flex-1 basis-[160px] items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 backdrop-blur-xl">
                 <span className="shrink-0 text-[#e8c98e]">
-                  <s.Icon className="h-5 w-5" strokeWidth={1.8} />
+                  <s.Icon className="h-6 w-6" strokeWidth={1.8} />
                 </span>
-                <div className="text-left">
+                <div className="flex flex-row items-baseline gap-2">
                   <div className="font-serif text-xl font-bold leading-none text-white">{s.num}</div>
-                  <div className="mt-1 font-mono text-[14px] font-extrabold uppercase tracking-[0.1em] text-white/80">{s.label}</div>
+                  <div className="font-mono text-[14px] font-extrabold uppercase tracking-[0.1em] text-white/80">{s.label}</div>
                 </div>
               </div>
             </Runaway>
