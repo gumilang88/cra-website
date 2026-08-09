@@ -6,7 +6,7 @@ import Runaway from "@/components/Runaway";
 import { BatteryLow, Pill, PersonStanding, TrendingDown } from "lucide-react";
 
 const navLinks = [
-  { label: "Buy", href: "#buy" },
+  { label: "Buy", href: "https://radardex.pro/#0xbd35d29e40b74a5934dfdec307036825a16e77e7", external: true },
   { label: "About", href: "#about" },
   { label: "Tokenomics", href: "#tokenomics" },
   { label: "Roadmap", href: "#roadmap" },
@@ -42,7 +42,9 @@ function Navbar() {
       </a>
       <nav className="flex items-center gap-6">
         {navLinks.map((l) => (
-          <a key={l.label} href={l.href} className="nav-link text-sm text-white/80 transition hover:text-white">
+          <a key={l.label} href={l.href} className="nav-link text-sm text-white/80 transition hover:text-white"
+            {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
             {l.label}
           </a>
         ))}
