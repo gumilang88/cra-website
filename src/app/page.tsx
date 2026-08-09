@@ -32,7 +32,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 flex h-[101px] items-center justify-between border-b border-white/10 bg-[#121212]/90 px-8 backdrop-blur">
       <a href="#top" className="flex items-center gap-2">
         <Image
-          src="/images/hero-logo.png"
+          src="/images/cra-logo.png"
           alt="CRA logo"
           width={48}
           height={48}
@@ -60,7 +60,7 @@ function Hero() {
       >
         <div className="relative z-10 flex flex-col items-center">
           <Image
-            src="/images/hero-logo.png"
+            src="/images/cra-logo.png"
             alt="CRA MEME logo"
             width={794}
             height={841}
@@ -136,7 +136,7 @@ function AboutRow() {
           <Runaway>
             <div className="about-logo-rotate">
               <Image
-                src="/images/hero-logo.png"
+                src="/images/cra-logo.png"
                 alt="CRA MEME"
                 width={360}
                 height={381}

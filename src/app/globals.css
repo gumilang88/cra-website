@@ -124,7 +124,7 @@
 
 .coin {
   --coin-size: 18rem;
-  --coin-face: url(/images/hero-logo.png);
+  --coin-face: url(/images/cra-logo.png);
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
