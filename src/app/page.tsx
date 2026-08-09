@@ -136,10 +136,10 @@ function AboutRow() {
           <Runaway>
             <div className="about-logo-rotate">
               <Image
-                src="/images/cra-logo.png"
+                src="/images/cra-character-nobg.png"
                 alt="CRA MEME"
-                width={360}
-                height={381}
+                width={500}
+                height={515}
                 priority
                 className="hero-logo h-auto w-64 md:w-80"
               />
