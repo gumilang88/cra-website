@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Noto_Serif, Rock_Salt } from "next/font/google";
+import CoinRain from "@/components/CoinRain";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const notoSerif = Noto_Serif({
+  variable: "--font-noto-serif",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const rockSalt = Rock_Salt({
+  variable: "--font-rock-salt",
+  weight: "400",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  title: "CRA - Build Chaos",
+  description:
+    "The most easy going and winning man's man meme on the internet.",
 };
 
 export default function RootLayout({
@@ -25,9 +35,30 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${inter.variable} ${notoSerif.variable} ${rockSalt.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <CoinRain />
+        {/* BREAKING banner — muncul saat chaos mode aktif */}
+        <div className="chaos-breaking" aria-hidden>
+          <div className="chaos-breaking-inner">
+            <span>🚨 BREAKING: CRA RIPPING PAST THE MARKET</span>
+            <span>🚨 BREAKING: DEV RUGGED THE LIQUIDITY</span>
+            <span>🚨 BREAKING: CHAOS IS OFFICIALLY ON</span>
+            <span>🚨 BREAKING: CRA RIPPING PAST THE MARKET</span>
+            <span>🚨 BREAKING: DEV RUGGED THE LIQUIDITY</span>
+            <span>🚨 BREAKING: CHAOS IS OFFICIALLY ON</span>
+            <span>🚨 BREAKING: CRA RIPPING PAST THE MARKET</span>
+            <span>🚨 BREAKING: DEV RUGGED THE LIQUIDITY</span>
+            <span>🚨 BREAKING: CHAOS IS OFFICIALLY ON</span>
+            <span>🚨 BREAKING: CRA RIPPING PAST THE MARKET</span>
+            <span>🚨 BREAKING: DEV RUGGED THE LIQUIDITY</span>
+            <span>🚨 BREAKING: CHAOS IS OFFICIALLY ON</span>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
