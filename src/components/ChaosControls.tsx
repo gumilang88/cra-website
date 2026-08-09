@@ -43,14 +43,14 @@ export default function ChaosControls() {
       chaosInterval.current = setInterval(() => {
         const els = cards();
         els.forEach((el, i) => {
-          const rx = (Math.random() - 0.5) * 8;
-          const ry = (Math.random() - 0.5) * 8;
-          const rz = (Math.random() - 0.5) * 5;
-          const delay = Math.random() * 200; // tiap card start acak
-          el.style.transition = `transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) ${delay}ms`;
+          const rx = (Math.random() - 0.5) * 24;
+          const ry = (Math.random() - 0.5) * 24;
+          const rz = (Math.random() - 0.5) * 15;
+          const delay = Math.random() * 300; // tiap card start acak
+          el.style.transition = `transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28) ${delay}ms`;
           el.style.transform = `translate(${rx}px, ${ry}px) rotate(${rz}deg)`;
         });
-      }, 600);
+      }, 400);
 
       // Logo About muter kenceng
       const aboutLogo = document.querySelector<HTMLElement>(".about-logo-rotate");
