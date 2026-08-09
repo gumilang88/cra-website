@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import ChaosControls from "@/components/ChaosControls";
 import Gauge from "@/components/Gauge";
 import Runaway from "@/components/Runaway";
-import { BatteryLow, Pill, PersonStanding, TrendingDown } from "lucide-react";
+import { BatteryLow, Pill, PersonStanding, TrendingDown, ShoppingCart, Bomb, DollarSign, Car } from "lucide-react";
 
 const navLinks = [
   { label: "Buy", href: "https://radardex.pro/#0xbd35d29e40b74a5934dfdec307036825a16e77e7", external: true },
@@ -183,10 +183,10 @@ function AboutRow() {
 
 function WeirdStats() {
   const stats = [
-    { num: "100%", label: "Hair loss", Icon: PersonStanding },
-    { num: "0%", label: "Willpower", Icon: BatteryLow },
-    { num: "-99%", label: "Chart acc.", Icon: TrendingDown },
-    { num: "∞", label: "Copium", Icon: Pill },
+    { num: "BUY", label: "CRA", Icon: ShoppingCart },
+    { num: "WAIT", label: "CHAOS", Icon: Bomb },
+    { num: "YOU", label: "RICH", Icon: DollarSign },
+    { num: "LAMBO", label: "MOON", Icon: Car },
   ];
   return (
     <section className="mx-auto mt-[100px] w-full max-w-[900px] px-6">
