@@ -88,20 +88,26 @@ function Hero() {
           </a>
 
           {/* Buy Now Card — RadarDex */}
-          <div className="buy-card anim-fade-up delay-4 mt-8 w-full max-w-[420px] rounded-xl border border-[#be9d66]/25 bg-[#be9d66]/[0.06] p-5 backdrop-blur-sm">
+          <div className="buy-card anim-fade-up delay-4 mt-8 w-full max-w-[420px] rounded-xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#be9d66]/20">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0c88a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 overflow-hidden">
+                <Image
+                  src="/images/cra-logo.png"
+                  alt="CRA"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
+                />
               </div>
               <div>
-                <div className="font-serif text-base font-semibold text-white">Buy $CRA</div>
-                <div className="font-mono text-[11px] text-white/40">on RadarDex</div>
+                <div className="font-serif text-base font-semibold leading-tight text-white">Buy $CRA</div>
+                <div className="font-sans text-[12px] text-white/40">on RadarDex</div>
               </div>
             </div>
 
             {/* Token address */}
-            <div className="mb-5 flex items-center gap-2 rounded-lg bg-black/30 px-3 py-2.5 border border-white/5">
-              <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-[#e0c88a]">CA</span>
+            <div className="mb-5 flex items-center gap-2 rounded-lg bg-black/25 px-3 py-2.5 border border-white/5">
+              <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-white/40">CA</span>
               <code className="flex-1 truncate font-mono text-[11px] text-white/50 select-all">0xbd35d29e40b74a5934dfdec307036825a16e77e7</code>
               <span
                 className="shrink-0 rounded p-1 text-white/30"
@@ -116,7 +122,7 @@ function Hero() {
               href="https://radardex.pro/#0xbd35d29e40b74a5934dfdec307036825a16e77e7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#be9d66] px-5 py-3 font-sans text-sm font-semibold text-black transition hover:bg-[#d4b87a] hover:shadow-[0_0_24px_rgba(190,157,102,0.25)] active:scale-[0.98]"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 font-sans text-sm font-semibold text-black transition hover:bg-white/90 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-[0.98]"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
               Buy Now on RadarDex
