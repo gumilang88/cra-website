@@ -186,7 +186,7 @@ function WeirdStats() {
     { num: "BUY", label: "CRA", Icon: ShoppingCart },
     { num: "WAIT", label: "CHAOS", Icon: Bomb },
     { num: "YOU", label: "RICH", Icon: DollarSign },
-    { num: "REPEAT", label: "LOOP", Icon: Car },
+    { num: "REPEAT", label: "AGAIN", Icon: TrendingDown },
   ];
   return (
     <section className="mx-auto mt-[100px] w-full max-w-[900px] px-6">
