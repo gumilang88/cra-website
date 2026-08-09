@@ -28,33 +28,51 @@ export default function ChaosControls() {
     document.documentElement.classList.toggle("chaos-mode", on);
   }, [on]);
 
-  // Chaos layout: random shake ke semua card tiap 800ms
+  // Chaos layout: card goyang tidak berurutan + logo About muter kenceng
   useEffect(() => {
     if (on) {
-      const cards = () => document.querySelectorAll<HTMLElement>(
-        ".card-lift, .chaos-wander, .buy-card, .rounded-2xl, .rounded-xl, [class*='reveal']"
-      );
+      const cardSelectors = [
+        ".card-lift", ".chaos-wander", ".buy-card",
+        "[class*='rounded-2xl']", "[class*='rounded-xl']",
+        "section[id] > div > div",
+      ];
+      const cards = () => cardSelectors.flatMap(s => Array.from(document.querySelectorAll<HTMLElement>(s)));
+
+      // Goyang acak tiap card dengan timing berbeda
       chaosInterval.current = setInterval(() => {
-        cards().forEach((el, i) => {
-          const rx = (Math.random() - 0.5) * 6;
-          const ry = (Math.random() - 0.5) * 6;
-          const rz = (Math.random() - 0.5) * 3;
-          el.style.transition = "transform 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28)";
+        const els = cards();
+        els.forEach((el, i) => {
+          const rx = (Math.random() - 0.5) * 8;
+          const ry = (Math.random() - 0.5) * 8;
+          const rz = (Math.random() - 0.5) * 5;
+          const delay = Math.random() * 200; // tiap card start acak
+          el.style.transition = `transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) ${delay}ms`;
           el.style.transform = `translate(${rx}px, ${ry}px) rotate(${rz}deg)`;
         });
-      }, 800);
+      }, 600);
+
+      // Logo About muter kenceng
+      const aboutLogo = document.querySelector<HTMLElement>(".about-logo-rotate");
+      if (aboutLogo) {
+        aboutLogo.style.animation = "aboutSpinFast 0.6s linear infinite";
+      }
     } else {
       if (chaosInterval.current) {
         clearInterval(chaosInterval.current);
         chaosInterval.current = null;
       }
-      // Reset all
+      // Reset all cards
       document.querySelectorAll<HTMLElement>(
-        ".card-lift, .chaos-wander, .buy-card, .rounded-2xl, .rounded-xl, [class*='reveal']"
+        ".card-lift, .chaos-wander, .buy-card, [class*='rounded-2xl'], [class*='rounded-xl'], section[id] > div > div"
       ).forEach((el) => {
         el.style.transition = "";
         el.style.transform = "";
       });
+      // Reset logo spin
+      const aboutLogo = document.querySelector<HTMLElement>(".about-logo-rotate");
+      if (aboutLogo) {
+        aboutLogo.style.animation = "";
+      }
     }
     return () => {
       if (chaosInterval.current) clearInterval(chaosInterval.current);

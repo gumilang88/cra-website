@@ -352,6 +352,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@keyframes aboutSpinFast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 /* Wrapper yang muter pelan ke kanan — jadi lapisan terpisah dari float/glow
    (karena float juga pakai transform, gabung di 1 elemen = rotasi ketimpa) */
 .about-logo-rotate {
