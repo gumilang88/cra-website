@@ -12,37 +12,72 @@ interface ChaosCoin {
 }
 
 /**
- * CHAOS MODE — widget saklar di tengah.
- * OFF: meter hijau "CALM".
- * ON: naik ke 99% "FULL CHAOS" + chaos mode CSS + HUJAN LOGO CRA.
+ * CHAOS MODE v3 — Gahar.
+ * ON: hujan logo CRA DERAS otomatis (ga perlu scroll)
+ *   + layout acak (shake, tilt, glitch semua card)
+ * OFF: CALM, balik normal.
  */
 export default function ChaosControls() {
   const [on, setOn] = useState(false);
   const [coins, setCoins] = useState<ChaosCoin[]>([]);
   const spawnTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const chaosInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Toggle chaos CSS class
+  // Toggle chaos CSS class + layout madness
   useEffect(() => {
     document.documentElement.classList.toggle("chaos-mode", on);
   }, [on]);
 
-  // Spawner: hujan logo CRA pas chaos ON
+  // Chaos layout: random shake ke semua card tiap 800ms
+  useEffect(() => {
+    if (on) {
+      const cards = () => document.querySelectorAll<HTMLElement>(
+        ".card-lift, .chaos-wander, .buy-card, .rounded-2xl, .rounded-xl, [class*='reveal']"
+      );
+      chaosInterval.current = setInterval(() => {
+        cards().forEach((el, i) => {
+          const rx = (Math.random() - 0.5) * 6;
+          const ry = (Math.random() - 0.5) * 6;
+          const rz = (Math.random() - 0.5) * 3;
+          el.style.transition = "transform 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28)";
+          el.style.transform = `translate(${rx}px, ${ry}px) rotate(${rz}deg)`;
+        });
+      }, 800);
+    } else {
+      if (chaosInterval.current) {
+        clearInterval(chaosInterval.current);
+        chaosInterval.current = null;
+      }
+      // Reset all
+      document.querySelectorAll<HTMLElement>(
+        ".card-lift, .chaos-wander, .buy-card, .rounded-2xl, .rounded-xl, [class*='reveal']"
+      ).forEach((el) => {
+        el.style.transition = "";
+        el.style.transform = "";
+      });
+    }
+    return () => {
+      if (chaosInterval.current) clearInterval(chaosInterval.current);
+    };
+  }, [on]);
+
+  // Hujan logo CRA — auto deras, ga perlu scroll
   useEffect(() => {
     if (on) {
       spawnTimer.current = setInterval(() => {
-        const left = Math.random() * 94 + 2;
+        const left = Math.random() * 96 + 2;
         const id = Date.now() + Math.random();
         const coin: ChaosCoin = {
           id,
           left,
-          scale: 0.5 + Math.random() * 1.0,
-          drift: (Math.random() - 0.5) * 80,
+          scale: 0.4 + Math.random() * 1.1,
+          drift: (Math.random() - 0.5) * 100,
         };
-        setCoins((prev) => [...prev.slice(-50), coin]);
+        setCoins((prev) => [...prev.slice(-60), coin]);
         setTimeout(() => {
           setCoins((prev) => prev.filter((c) => c.id !== id));
-        }, 3000);
-      }, 120); // ~8.3 coin/detik, lebih deras dari CoinRain
+        }, 2800);
+      }, 80); // ~12.5 coin/detik — BANJIR
     } else {
       if (spawnTimer.current) {
         clearInterval(spawnTimer.current);
@@ -106,7 +141,7 @@ export default function ChaosControls() {
         </Reveal>
       </section>
 
-      {/* HUJAN LOGO CRA — only when chaos ON */}
+      {/* HUJAN LOGO CRA — DERAS, auto, no scroll needed */}
       {on && (
         <div
           className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
@@ -119,7 +154,7 @@ export default function ChaosControls() {
               style={{
                 left: `${c.left}%`,
                 top: "-40px",
-                animation: "chaosCoinDrop 3s ease-in forwards",
+                animation: "chaosCoinDrop 2.8s ease-in forwards",
                 ["--drift" as string]: `${c.drift}px`,
                 willChange: "transform, opacity",
               }}
@@ -131,8 +166,8 @@ export default function ChaosControls() {
                 style={{
                   width: `${20 * c.scale}px`,
                   height: `${20 * c.scale}px`,
-                  opacity: 0.7,
-                  filter: "drop-shadow(0 0 10px rgba(255,82,85,0.6))",
+                  opacity: 0.8,
+                  filter: "drop-shadow(0 0 12px rgba(255,82,85,0.7))",
                 }}
               />
             </div>
