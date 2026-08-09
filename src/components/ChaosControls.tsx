@@ -35,6 +35,7 @@ export default function ChaosControls() {
         ".card-lift", ".chaos-wander", ".buy-card",
         "[class*='rounded-2xl']", "[class*='rounded-xl']",
         "section[id] > div > div",
+        ".buy-card > div", ".buy-card a",
       ];
       const cards = () => cardSelectors.flatMap(s => Array.from(document.querySelectorAll<HTMLElement>(s)));
 
@@ -63,7 +64,7 @@ export default function ChaosControls() {
       }
       // Reset all cards
       document.querySelectorAll<HTMLElement>(
-        ".card-lift, .chaos-wander, .buy-card, [class*='rounded-2xl'], [class*='rounded-xl'], section[id] > div > div"
+        ".card-lift, .chaos-wander, .buy-card, [class*='rounded-2xl'], [class*='rounded-xl'], section[id] > div > div, .buy-card > div, .buy-card a"
       ).forEach((el) => {
         el.style.transition = "";
         el.style.transform = "";
